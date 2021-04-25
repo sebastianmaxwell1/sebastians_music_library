@@ -65,11 +65,13 @@ class App extends Component {
         }
     }
 
-    addSong(songId){
+    async addSong(songId){
+        await axios.post('http://127.0.0.1:8000/music/', '');
+        this.getAllSongs()
     }
 
-    async deleteSong(songId){
-        await axios.delete('http://127.0.0.1:8000/music/${songId}/');
+    async deleteSong(Id){
+        await axios.delete('http://127.0.0.1:8000/music/+/');
         this.getAllSongs();
     }
 
@@ -81,7 +83,7 @@ class App extends Component {
 
                 <MusicTable mapSongs={() => this.mapSongs()}/>
 
-                <SongForm addSong={(song) => this.addSong(song)}/>
+                <SongForm addSong={(song) => this.addSong.bind(song)}/>
             </div>
         );
     }

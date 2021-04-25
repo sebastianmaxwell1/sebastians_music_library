@@ -9,9 +9,7 @@ const MusicTable = (props) => {
                     <th>Artist</th>
                     <th>Album</th>
                     <th>Release_date</th>
-                    <th>Delete
-                     {/* <button onClick={() => removeData(id)}>Delete</button> */}
-                    </th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             {props.mapSongs()}
