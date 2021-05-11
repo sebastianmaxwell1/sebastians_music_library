@@ -5,6 +5,7 @@ import MusicTable from './MusicTable';
 import Song from './Song'
 import SearchBar from './SearchBar/SearchBar';
 import SongForm from './SongForm/SongForm';
+import TitleBar from './TitleBar/titleBar';
 
 
 
@@ -78,6 +79,8 @@ class App extends Component {
     render(){
         return(
             <div>
+                <TitleBar/>
+
                 <SearchBar handleSearch={(input) => this.handleSearch.bind(input)}/>
 
                 <MusicTable mapSongs={() => this.mapSongs()}/>
