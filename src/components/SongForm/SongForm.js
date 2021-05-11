@@ -24,7 +24,7 @@ class SongForm extends Component {
             artist: this.state.artist,
             release_date: this.state.release_date,
     }
-    this.props.addNewSong(song);
+    this.props.addSong(song);
     this.setState({
         title: '',
         album: '',

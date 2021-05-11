@@ -16,21 +16,7 @@ class App extends Component {
    }
    state = {
        songs: [],
-       filteredSongs: [],
        userInput: ''
-   }
-
-   editSearchTerm = (e) => {
-       this.setState({searchTerm: e.target.value})
-   }
-
-   dynamicSearch = (songs) => {
-     return this.state.data.filteredSongs(song => songs.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
-
-   }
-
-   filterTable(input){
-
    }
 
    componentDidMount(){
@@ -45,45 +31,58 @@ class App extends Component {
     }
 
     mapSongs(){
-        if(this.state.userInput === ''){
-            return this.state.songs.map(song =>
-                <Song
-                    key={song.id}
-                    song={song}
-                    deleteSong={(songId) => this.deleteSong(songId)}
-                />
-            );
-        }
-        else{
-            return this.state.filteredSongs.map(song =>
-                <Song
+        return this.state.songs.map(song =>
+            <Song
                 key={song.id}
                 song={song}
-                deleteSong={(songId) => this.deleteSong(songId)}
-                />
-            );
-        }
+            />
+        )
     }
 
-    async addSong(songId){
-        await axios.post('http://127.0.0.1:8000/music/', '');
-        this.getAllSongs()
+    // mapSongs(){
+    //     if(this.state.userInput === ''){
+    //         return this.state.songs.map(song =>
+    //             <Song
+    //                 key={song.id}
+    //                 song={song}
+    //                 deleteSong={(song) => this.deleteSong(song)}
+    //             />
+    //         );
+    //     }
+    //     else{
+    //         return this.state.filteredSongs.map(song =>
+    //             <Song
+    //             key={song.id}
+    //             song={song}
+    //             deleteSong={(songId) => this.deleteSong(songId)}
+    //             />
+    //         );
+    //     }
+    // }
+
+    async addSong(song){
+        let response = await axios.post('http://127.0.0.1:8000/music/', song);
+        console.log(response.data)
+        alert('Song Added!')
+        this.setState({
+            song:response.data
+        });
+        
     }
 
-    async deleteSong(Id){
-        await axios.delete('http://127.0.0.1:8000/music/+/');
-        this.getAllSongs();
-    }
+    // async deleteSong(Id){
+    //     await axios.delete('http://127.0.0.1:8000/music/+/');
+    //     this.getAllSongs();
+    // }
 
     render(){
-        // console.log("this.state", this.state);
         return(
             <div>
-                <SearchBar filterTable={(input) => this.filterTable(input)}/>
+                <SearchBar handleSearch={(input) => this.handleSearch.bind(input)}/>
 
                 <MusicTable mapSongs={() => this.mapSongs()}/>
 
-                <SongForm addSong={(song) => this.addSong.bind(song)}/>
+                <SongForm addSong={this.addSong.bind(this)} />
             </div>
         );
     }
