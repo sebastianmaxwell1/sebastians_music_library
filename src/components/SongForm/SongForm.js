@@ -18,19 +18,25 @@ class SongForm extends Component {
     }
     handleSubmit(event) {
         event.preventDefault();
+        // console.log(this.state.title)
+        // console.log(this.state.album)
+        // console.log(this.state.artist)
+        // console.log(this.state.release_date)
         const song = {
             title: this.state.title,
             album: this.state.album,
             artist: this.state.artist,
             release_date: this.state.release_date,
     }
-    this.props.addSong(song);
+    this.props.addNewSong(song);
     this.setState({
         title: '',
         album: '',
         artist: '',
         release_date: '',
     });
+
+
 }
     render () {
         return(
@@ -62,7 +68,7 @@ class SongForm extends Component {
                             onChange={this.handleChange} />
                         </div>
                             <div className='col mt-3'>
-                                <input className="btn-md btn-primary px-5" type='submit' value='Add' />
+                                <input className="btn-md btn-primary px-5" type='submit' value='Add Song' />
                             </div>
                     </div>
                         <div className='row col-align input-group'>

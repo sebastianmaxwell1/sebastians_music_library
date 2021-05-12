@@ -40,42 +40,34 @@ class App extends Component {
         )
     }
 
-    // mapSongs(){
-    //     if(this.state.userInput === ''){
-    //         return this.state.songs.map(song =>
-    //             <Song
-    //                 key={song.id}
-    //                 song={song}
-    //                 deleteSong={(song) => this.deleteSong(song)}
-    //             />
-    //         );
-    //     }
-    //     else{
-    //         return this.state.filteredSongs.map(song =>
-    //             <Song
-    //             key={song.id}
-    //             song={song}
-    //             deleteSong={(songId) => this.deleteSong(songId)}
-    //             />
-    //         );
-    //     }
-    // }
-
-    async addSong(song){
-        let response = await axios.post('http://127.0.0.1:8000/music/', song);
-        console.log(response.data)
-        alert('Song Added!')
-        this.setState({
-            song:response.data
-        });
+    async addNewSong(song){
+        console.log(song)
+        try{
+            let response = await axios.post('http://127.0.0.1:8000/music/', song);
+            console.log(response.data)
+            alert('Song Added!')
+            this.setState({
+                song:response.data
+            });
+        }
+        catch(e){
+            console.log(e.message)
+        }
+       
+        
         
     }
 
-    // async deleteSong(Id){
-    //     await axios.delete('http://127.0.0.1:8000/music/+/');
-    //     this.getAllSongs();
-    // }
-
+    deleteSong(id, e){
+        axios.delete(`http://127.0.0.1:8000/music/`)
+          .then(res => {
+            console.log(res);
+            console.log(res.data);
+      
+            // const songs = this.state.songs.filter(item => item.id !== id);
+            // this.setState({ songs });
+          })
+    }
     render(){
         return(
             <div>
@@ -85,12 +77,13 @@ class App extends Component {
 
                 <MusicTable mapSongs={() => this.mapSongs()}/>
 
-                <SongForm addSong={this.addSong.bind(this)} />
+                <SongForm addNewSong={this.addNewSong.bind(this)} />
+             
             </div>
         );
     }
 }
-   
+
 
     
 export default App;
