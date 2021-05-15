@@ -43,7 +43,7 @@ class SongForm extends Component {
             <div>
                 <hr />
                 <center className="container-fluid">
-                    <h5>Add Song</h5>
+                    <h5>Add a song to the library!</h5>
                 </center>
                 <form className="container-fluid" onSubmit={this.handleSubmit}>
                     <div className='row col-align input-group'>

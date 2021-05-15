@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import './app.css'
+// import './app.css'
 import axios from 'axios';
 import MusicTable from './MusicTable';
 import Song from './Song'
-import SearchBar from './SearchBar/SearchBar';
 import SongForm from './SongForm/SongForm';
 import TitleBar from './TitleBar/titleBar';
+import './TitleBar/titleBar.css'
+import FilteredTable from './FilterTable'
 
 
 
@@ -14,6 +15,7 @@ class App extends Component {
        super()
 
        this.getAllSongs = this.getAllSongs.bind(this)
+   
    }
    state = {
        songs: [],
@@ -53,31 +55,39 @@ class App extends Component {
         catch(e){
             console.log(e.message)
         }
-       
-        
-        
     }
 
-    deleteSong(id, e){
-        axios.delete(`http://127.0.0.1:8000/music/`)
-          .then(res => {
-            console.log(res);
-            console.log(res.data);
-      
-            // const songs = this.state.songs.filter(item => item.id !== id);
-            // this.setState({ songs });
-          })
-    }
-    render(){
+    // async updateSong(song){
+    //     song.preventDefault();
+    //     const editSong = {
+    //         title: this.state.title,
+    //         artist: this.state.artist,
+    //         albim: this.state.album,
+    //         release_date: this.state.release_date
+    //     }
+    //     axios.put('http://127.0.0.1:8000/music/', song)
+    //     .then(res => console.log(res.data));
+    //     } 
+    
+        
+    
+
+    async removeSong(song) {
+	    song.preventDefault();
+	    axios.delete('http://127.0.0.1:8000/music/', song)
+        .then(res => console.log(res.data));
+}
+    
+    render() {
         return(
             <div>
                 <TitleBar/>
 
-                <SearchBar handleSearch={(input) => this.handleSearch.bind(input)}/>
 
-                <MusicTable mapSongs={() => this.mapSongs()}/>
+                <FilteredTable/>
 
-                <SongForm addNewSong={this.addNewSong.bind(this)} />
+                
+
              
             </div>
         );
@@ -85,5 +95,9 @@ class App extends Component {
 }
 
 
+// <SelectColumnFilter filter={() => this.filter()}/> <=== would not let me comment out above
     
 export default App;
+
+// <MusicTable mapSongs={() => this.mapSongs()}/>
+// <SongForm addNewSong={this.addNewSong.bind(this)} />

@@ -1,9 +1,57 @@
 .col-md-12 {
-    background-color: green;
+    background-color: rgb(38, 39, 38);
     width: 100%;
+}
+
+
+div{
+    background-color: rgb(38, 39, 38);
+}
+
+h5 {
+    padding-bottom: 0.2em;
+    padding-left: 1em;
+    color: whitesmoke;
+}
+
+/* col, .mt-3{
+    background-color: grey;
+
+} */
+
+input.btn-md.btn-primary.px-5{
+    background-color: grey;
+    border-color: whitesmoke
 }
 
 h1 {
     padding-bottom: 0.2em;
     padding-left: 1em;
+    color: whitesmoke;
+}
+
+th {
+    color: whitesmoke;
+    background-color: rgb(38, 39, 38);
+}
+
+td {
+    background-color: grey;
+}
+
+.col, .text-align {
+    text-align:center;
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.row-spacer {
+    margin-bottom: 2em;
 }
