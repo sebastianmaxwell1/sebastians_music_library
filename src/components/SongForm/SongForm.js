@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+
 class SongForm extends Component {
     constructor(props) {
         super(props);
@@ -18,17 +20,14 @@ class SongForm extends Component {
     }
     handleSubmit(event) {
         event.preventDefault();
-        // console.log(this.state.title)
-        // console.log(this.state.album)
-        // console.log(this.state.artist)
-        // console.log(this.state.release_date)
+
         const song = {
             title: this.state.title,
             album: this.state.album,
             artist: this.state.artist,
             release_date: this.state.release_date,
     }
-    this.props.addNewSong(song);
+    this.props.addSong(song);
     this.setState({
         title: '',
         album: '',
