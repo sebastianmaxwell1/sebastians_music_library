@@ -62,6 +62,8 @@ class App extends Component {
         }
     
     }
+
+    
     
     render() {
         return(
@@ -69,6 +71,7 @@ class App extends Component {
                 <TitleBar/>
 
                 <SearchBar />
+                
 
                 <SongForm addSong={this.addSong.bind(this)} />
                 <MusicTable mapSongs={() => this.mapSongs()}/>
@@ -79,8 +82,6 @@ class App extends Component {
     }
 }
 
-
-// <SelectColumnFilter filter={() => this.filter()}/> <=== would not let me comment out above
     
 export default App;
 

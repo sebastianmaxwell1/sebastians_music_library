@@ -1,11 +1,12 @@
 .col-md-12 {
-    background-color: rgb(38, 39, 38);
+    background-color: rgb(222, 243, 222);
     width: 100%;
 }
 
 
 div{
-    background-color: rgb(38, 39, 38);
+    background-color: grey;
+    
 }
 
 h5 {
@@ -15,12 +16,12 @@ h5 {
 }
 
 /* col, .mt-3{
-    background-color: grey;
+    background-color: purple;
 
 } */
 
 input.btn-md.btn-primary.px-5{
-    background-color: grey;
+    background-color: darkgrey;
     border-color: whitesmoke
 }
 
@@ -32,7 +33,7 @@ h1 {
 
 th {
     color: whitesmoke;
-    background-color: rgb(38, 39, 38);
+    background-color: darkgrey;
 }
 
 td {
@@ -54,4 +55,9 @@ td {
 
 .row-spacer {
     margin-bottom: 2em;
+}
+
+button {
+    background-color: whitesmoke;
+    border-color: darkgrey;
 }
